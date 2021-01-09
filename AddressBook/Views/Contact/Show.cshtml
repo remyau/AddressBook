@@ -1,0 +1,43 @@
+﻿@model AddressBook.Models.Contact
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<hr />
+
+<div class="container-fluid">
+    <div>
+        <p> @Html.LabelFor(m => m.FirstName) : @Model.FirstName</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.LastName) : @Model.LastName</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.PhoneNumber) : @Model.PhoneNumber</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.City) : @Model.City</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.Province) : @Model.Province</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.PostalCode) : @Model.PostalCode</p>
+    </div>
+
+    <div>
+        <p> @Html.LabelFor(m => m.Country) : @Model.Country</p>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back","Index","Contact",new { @class="btn btn-primary btn-sm"})
+</div>
+

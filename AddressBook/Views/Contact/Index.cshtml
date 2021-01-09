@@ -1,9 +1,23 @@
 ﻿@model IEnumerable<AddressBook.Models.Contact>
 @{
     ViewBag.Title = "Index";
+
+
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 <h2>Contacts</h2>
+
+<hr />
+
+<div>
+    @Html.ActionLink("Add Contcats", "Create", "Contact", new { @class = "btn btn-primary btn-sm" })
+</div>
+
+<hr />
 
 <div class="container">
     <div class="table-responsive">
@@ -24,7 +38,12 @@
                         <td>@contacts.FirstName</td>
                         <td>@contacts.LastName</td>
                         <td>@contacts.PhoneNumber</td>
-                        <td>View    Edit    Delete</td>
+                        <td>
+                            @Html.ActionLink("View","Show","Contact",new { Id = contacts.Id},null) ||
+                            @Html.ActionLink("Edit","Edit","Contact", new { Id = contacts.Id },null) ||
+                            @Html.ActionLink("Delete","Delete","Contact", new { Id = contacts.Id },null )
+                            
+                        </td>
                     </tr>
                 }
             </tbody>

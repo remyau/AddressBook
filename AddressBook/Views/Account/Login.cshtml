@@ -1,0 +1,40 @@
+﻿@model AddressBook.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm("Login", "Account"))
+{
+    <div class="form-group">
+        <div>
+            @Html.ValidationSummary()
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(u => u.UserName)
+            @Html.TextBoxFor(u => u.UserName,new { @class = "form-control" })
+            @Html.ValidationMessageFor(u=> u.UserName)
+            
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(u => u.PasswordHashed)
+            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u=>u.PasswordHashed)
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">Ok</button>            
+        </div>
+
+        <div>
+            <p>New User? Click here to @Html.ActionLink("Register", "Register", "Account")</p>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }

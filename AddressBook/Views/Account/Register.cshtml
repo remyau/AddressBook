@@ -1,0 +1,45 @@
+﻿@model AddressBook.Models.User
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "Account"))
+{
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(u => u.FirstName)
+            @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u => u.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(u => u.LastName)
+            @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u => u.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(u => u.UserName)
+            @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u => u.UserName)
+
+        </div>
+        <div>
+            @Html.LabelFor(u => u.PasswordHashed)
+            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u => u.PasswordHashed)
+        </div>
+        <div>
+            @Html.Label("Confirm Password")
+            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary btn-sm">Create</button>
+            @Html.ActionLink("Cancel","Login","Account",new { @class="btn btn-primary btn-sm"})
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
