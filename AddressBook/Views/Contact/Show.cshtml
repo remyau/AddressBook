@@ -7,7 +7,8 @@
 
 <hr />
 
-<div class="container-fluid">
+<div class="container">
+    
     <div>
         <p> @Html.LabelFor(m => m.FirstName) : @Model.FirstName</p>
     </div>
@@ -25,19 +26,16 @@
     </div>
 
     <div>
-        <p> @Html.LabelFor(m => m.Province) : @Model.Province</p>
-    </div>
-
-    <div>
         <p> @Html.LabelFor(m => m.PostalCode) : @Model.PostalCode</p>
     </div>
 
     <div>
         <p> @Html.LabelFor(m => m.Country) : @Model.Country</p>
     </div>
-</div>
 
-<div>
-    @Html.ActionLink("Back","Index","Contact",new { @class="btn btn-primary btn-sm"})
-</div>
 
+    <div>
+        @Html.ActionLink("Back", "Index", "Contact", new { @class = "btn btn-primary" })
+    </div>
+    
+</div>

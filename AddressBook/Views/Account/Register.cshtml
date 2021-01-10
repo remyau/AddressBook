@@ -1,4 +1,4 @@
-﻿@model AddressBook.Models.User
+﻿@model AddressBook.ViewModels.UserRegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -7,37 +7,43 @@
 
 @using (Html.BeginForm("Register", "Account"))
 {
-    <div class="form-group">
-        <div>
-            @Html.LabelFor(u => u.FirstName)
-            @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(u => u.FirstName)
-        </div>
-        <div>
-            @Html.LabelFor(u => u.LastName)
-            @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(u => u.LastName)
-        </div>
-        <div>
-            @Html.LabelFor(u => u.UserName)
-            @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(u => u.UserName)
-
-        </div>
-        <div>
-            @Html.LabelFor(u => u.PasswordHashed)
-            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
-            @Html.ValidationMessageFor(u => u.PasswordHashed)
-        </div>
-        <div>
-            @Html.Label("Confirm Password")
-            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary btn-sm">Create</button>
-            @Html.ActionLink("Cancel","Login","Account",new { @class="btn btn-primary btn-sm"})
-        </div>
+<div>
+    <div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <h5 class="text-danger">@Model.ErrMsag</h5>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.FirstName)
+        @Html.TextBoxFor(u => u.FirstName, new { placeholder = "Enter First Name", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.FirstName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.LastName)
+        @Html.TextBoxFor(u => u.LastName, new { placeholder = "Enter Last Name", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.LastName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.UserName)
+        @Html.TextBoxFor(u => u.UserName, new { placeholder = "Enter Email ID", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.UserName, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Password)
+        @Html.PasswordFor(u => u.Password, new { placeholder = "Enter Password", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.ConfirmPassword)
+        @Html.PasswordFor(u => u.ConfirmPassword, new { placeholder = "Re Enter Password", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.ConfirmPassword, "", new { @class = "text-danger" })
+    </div>
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-sm">Create</button>
+        @Html.ActionLink("Cancel", "Login", "Account", new { @class = "btn btn-primary btn-sm" })
+    </div>
+</div>
 }
 
 @section scripts{

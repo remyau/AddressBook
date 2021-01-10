@@ -23,7 +23,6 @@ textarea {
     max-width: 280px;
 }
 
-/*Added by Remya 09012021*/
-field-validation-error{
-    color:red;
+.bgstylecustom {
+    background-color: #99ceff;
 }

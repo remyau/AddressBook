@@ -19,5 +19,7 @@ namespace AddressBook.ViewModels
         [Required(ErrorMessage = "Password is Required")]
         [StringLength(20,ErrorMessage ="Password must be between 8 to 255 characters",MinimumLength =8)]
         public string PasswordHashed { get; set; }
+
+        public string ErrMsg { get; set; }
     }
 }

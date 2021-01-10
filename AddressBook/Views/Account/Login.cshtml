@@ -4,37 +4,55 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-
-
-@using (Html.BeginForm("Login", "Account"))
+<br />
+@using (Html.BeginForm("Login", "Account",FormMethod.Post))
 {
-    <div class="form-group">
-        <div>
-            @Html.ValidationSummary()
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(u => u.UserName)
-            @Html.TextBoxFor(u => u.UserName,new { @class = "form-control" })
-            @Html.ValidationMessageFor(u=> u.UserName)
-            
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(u => u.PasswordHashed)
-            @Html.PasswordFor(u => u.PasswordHashed, new { @class = "form-control" })
-            @Html.ValidationMessageFor(u=>u.PasswordHashed)
-        </div>
+    <br /> <br />
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-sm">Ok</button>            
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Login</h3>
+                    </div>
+                    <div class="panel-body">
+                        @{ if (Model.ErrMsg != "")
+                            {
+                                <div class="form-group">
+                                    <h5 class="text-danger">@Model.ErrMsg</h5>
+                                </div>
+                            }
+                        }
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.UserName)
+                            @Html.TextBoxFor(u => u.UserName, new { placeholder = "Enter your Email", @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.UserName, "", new { @class = "text-danger" })
+                        </div>
 
-        <div>
-            <p>New User? Click here to @Html.ActionLink("Register", "Register", "Account")</p>
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.PasswordHashed)
+                            @Html.PasswordFor(u => u.PasswordHashed, new { placeholder = "Enter Password", @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.PasswordHashed, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.AntiForgeryToken()
+                        <center>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" style="width:70px;">Ok</button>
+                            </div>
+
+                            <div>
+                                <p>New User? Click here to @Html.ActionLink("Register", "Register", "Account")</p>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 }
 
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryval")
-    }
+ @section scripts{
+     @Scripts.Render("~/bundles/jqueryval")
+ }

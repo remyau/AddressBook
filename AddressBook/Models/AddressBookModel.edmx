@@ -23,10 +23,10 @@
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="256" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="PasswordHashed" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PasswordHashed" Type="char" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityContainer Name="UserModelStoreContainer">
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
@@ -41,10 +41,10 @@
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHashed" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordHashed" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="AddressBookEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />

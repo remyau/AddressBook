@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using AddressBook.ViewModels;
 
 namespace AddressBook.Controllers
 {
@@ -35,14 +36,29 @@ namespace AddressBook.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            ContactViewModel contactViewModel = new ContactViewModel
+            {
+
+            };
+            return View(contactViewModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Contact contact)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(ContactViewModel contactViewModel)
         {
             if (ModelState.IsValid)
             {
+                var contact = new Contact
+                {
+                    FirstName = contactViewModel.FirstName,
+                    LastName = contactViewModel.LastName,
+                    PhoneNumber = contactViewModel.PhoneNumber,
+                    City = contactViewModel.City,
+                    Province = contactViewModel.Province,
+                    PostalCode = contactViewModel.PostalCode,
+                    Country = contactViewModel.Country
+                };
                 await Task.Run(() => addressDBContext.Contacts.Add(contact));
                 await addressDBContext.SaveChangesAsync();
                 return RedirectToAction("Index", "Contact");
@@ -78,11 +94,23 @@ namespace AddressBook.Controllers
         public async Task<ActionResult> Edit(int Id)
         {
             var contact = await addressDBContext.Contacts.FindAsync(Id);
-            return View(contact);
+            var contactViewModel = new ContactViewModel
+            {
+                Id=contact.Id,
+                FirstName = contact.FirstName,
+                LastName = contact.LastName,
+                PhoneNumber = contact.PhoneNumber,
+                City = contact.City,
+                Province = contact.Province,
+                PostalCode = contact.PostalCode,
+                Country = contact.Country
+            };
+            return View(contactViewModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(Contact contact)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(ContactViewModel contact)
         {
             if (contact.Id == 0)
             {

@@ -9,25 +9,23 @@
     }
 }
 
-<h2>Contacts</h2>
-
-<hr />
-
-<div>
-    @Html.ActionLink("Add Contcats", "Create", "Contact", new { @class = "btn btn-primary btn-sm" })
-</div>
-
-<hr />
 
 <div class="container">
+
+    <h2>Contacts</h2>
+    <hr />
+    <div>
+        @Html.ActionLink("Add Contcats", "Create", "Contact", new { @class = "btn btn-primary btn-sm" })
+    </div><br />
+    
     <div class="table-responsive">
-        <table class="table table-bordered table-hover table-condensed">
-            <thead>
+        <table class="table table-bordered table-hover table-condensed" style="border-radius:2px">
+            <thead class="panel-primary">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone Number</th>
-                    <th></th>
+                    <th class="bgstylecustom">First Name</th>
+                    <th class="bgstylecustom">Last Name</th>
+                    <th class="bgstylecustom">Phone Number</th>
+                    <th class="bgstylecustom"></th>
                 </tr>
             </thead>
 
@@ -38,11 +36,14 @@
                         <td>@contacts.FirstName</td>
                         <td>@contacts.LastName</td>
                         <td>@contacts.PhoneNumber</td>
-                        <td>
-                            @Html.ActionLink("View","Show","Contact",new { Id = contacts.Id},null) ||
-                            @Html.ActionLink("Edit","Edit","Contact", new { Id = contacts.Id },null) ||
-                            @Html.ActionLink("Delete","Delete","Contact", new { Id = contacts.Id },null )
-                            
+                        <td style="width:150px">
+                            <center>
+                                @Html.ActionLink("View", "Show", "Contact", new { Id = contacts.Id }, null) |
+                                @Html.ActionLink("Edit", "Edit", "Contact", new { Id = contacts.Id }, null) |
+                                @Html.ActionLink("Delete", "Delete", "Contact", new { Id = contacts.Id },
+                                                  new { onclick = "return confirm('Are you sure you want to delete?');" })
+                            </center>
+
                         </td>
                     </tr>
                 }

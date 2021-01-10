@@ -1,5 +1,8 @@
-﻿@if (Session["userId"]!=null)
+﻿@if (Session["userId"] != null)
 {
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+    </ul>
 
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
@@ -7,8 +10,8 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <p>Hello   @Session["userName"]  !) </p>
-            </li>  
+                <a href="">Hello! @Session["userName"] </a>
+            </li>
             <li>
                 <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             </li>
@@ -17,7 +20,7 @@
 }
 else
 {
-<ul class="nav navbar-nav navbar-right">    
-    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-</ul>
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Login", "Login", "Account")</li>*@
+    </ul>
 }
