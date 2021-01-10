@@ -1,6 +1,11 @@
 ﻿@model AddressBook.ViewModels.ContactViewModel
 @{
     ViewBag.Title = "Create";
+
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 <h2>Create</h2>

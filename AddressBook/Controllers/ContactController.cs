@@ -24,8 +24,7 @@ namespace AddressBook.Controllers
             addressDBContext.Dispose();
         }
 
-        // GET: Contact
-        //[Route ("Contact")]
+        // GET: Contact        
         [HttpGet]
         public async Task<ViewResult> Index()
         {
@@ -33,7 +32,7 @@ namespace AddressBook.Controllers
             return View(contact);
         }
 
-        [HttpGet]
+        [HttpGet]        
         public ActionResult Create()
         {
             ContactViewModel contactViewModel = new ContactViewModel

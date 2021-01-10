@@ -1,6 +1,11 @@
 ﻿@model AddressBook.Models.Contact
 @{
     ViewBag.Title = "Show";
+
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 <h2>Show</h2>

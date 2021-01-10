@@ -66,7 +66,7 @@ namespace AddressBook.Controllers
                 await Task.Run(() => addressBookDb.Users.Add(user));
                 await addressBookDb.SaveChangesAsync();
                 userRegister.UserId = user.UserId;
-                return RedirectToAction("Login");                            
+                return RedirectToAction("Index");                            
                 
             }
 
