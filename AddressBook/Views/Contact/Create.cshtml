@@ -8,58 +8,88 @@
     }
 }
 
-<h2>Create</h2>
+<h2>Create</h2><br />
 
 @using (Html.BeginForm("Create", "Contact", FormMethod.Post))
 {
-    <div class="container">
-        <div class="form-group">
-            @Html.LabelFor(m => m.FirstName)
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.FirstName,"", new { @class = "text-danger" })
+    <div class="container">        
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.FirstName)
+            </div>
+            <div class="col-sm-5">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.LastName)
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.LastName)
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.PhoneNumber)
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new {placeholder="000-000-0000", @class = "text-danger" })
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.PhoneNumber)
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { placeholder = "000-000-0000", @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.City)
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.City)
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.City)
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Province)
-            @Html.TextBoxFor(m => m.Province, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Province)
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.Province)
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Province, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Province)
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.PostalCode)
-            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+                @Html.LabelFor(m => m.PostalCode)
+            </div>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Country)
-            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    @Html.LabelFor(m => m.Country)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                    @*@Html.DropDownListFor(m=> m.CountryLists,new SelectList { Text= })*@
+                    @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.AntiForgeryToken()
+            <div class="form-group row col-sm-10">
+                <button class="btn btn-primary" type="submit">Submit</button>
+                @Html.ActionLink("Cancel", "Index", "Contact", new { @class = "btn btn-primary" })
+            </div>
         </div>
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit">Submit</button>
-            @Html.ActionLink("Cancel","Index","Contact",new { @class="btn btn-primary"})
-        </div>
-    </div>
 }
 
 @section scripts{
