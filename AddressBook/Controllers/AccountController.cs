@@ -123,6 +123,7 @@ namespace AddressBook.Controllers
 
         public byte[] CalculateSHA256(string str)
         {
+            // This is a Password encryption function
             SHA256 sha256 = SHA256Managed.Create();
             byte[] hashvalue;
             UTF8Encoding objUtf8 = new UTF8Encoding();
