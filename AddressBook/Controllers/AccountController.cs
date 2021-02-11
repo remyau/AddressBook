@@ -121,6 +121,6 @@ namespace AddressBook.Controllers
             Session.Abandon();
             return RedirectToAction("Login", "Account");
         }
-        
+
     }
 }
