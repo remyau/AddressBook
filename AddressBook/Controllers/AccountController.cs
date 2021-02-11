@@ -98,6 +98,7 @@ namespace AddressBook.Controllers
 
                 if (_user != null)
                 {
+                    //Storing session id
                     Session["userId"] = _user.UserId;
                     Session["userName"] = _user.UserName;
                     return RedirectToAction("Index", "Contact");
