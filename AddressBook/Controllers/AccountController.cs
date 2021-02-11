@@ -1,11 +1,10 @@
 ﻿using AddressBook.Models;
 using AddressBook.ViewModels;
+using AddressBook.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -16,10 +15,12 @@ namespace AddressBook.Controllers
     public class AccountController : Controller
     {
         private AddressBookEntities addressBookDb;
+        private CustomHashs ch;
 
         public AccountController()
         {
             addressBookDb = new AddressBookEntities();
+            ch= new CustomHashs();
         }
 
         protected override void Dispose(bool disposing)
@@ -35,7 +36,8 @@ namespace AddressBook.Controllers
 
         public ActionResult Register()
         {            
-            var userRegisterViewModel = new UserRegisterViewModel { };
+            var userRegisterViewModel = new UserRegisterViewModel {               
+            };
              
             return View(userRegisterViewModel);
         }
@@ -46,8 +48,8 @@ namespace AddressBook.Controllers
         {
             userRegister.ErrMsag = "";
             if (ModelState.IsValid)
-            {
-                string password = Convert.ToBase64String(CalculateSHA256(userRegister.Password));
+            {                
+                string password = Convert.ToBase64String(ch.CalculateSHA256(userRegister.Password));
                 User user = new User { 
                     FirstName=userRegister.FirstName,
                     LastName=userRegister.LastName,
@@ -89,7 +91,7 @@ namespace AddressBook.Controllers
 
             if (ModelState.IsValid)
             {
-                string password = Convert.ToBase64String(CalculateSHA256(userViewModel.PasswordHashed));
+                string password = Convert.ToBase64String(ch.CalculateSHA256(userViewModel.PasswordHashed));
                 var _user = await Task.Run(() => addressBookDb.Users
                                                 .Where(m => (m.UserName == userViewModel.UserName && m.PasswordHashed == password))
                                                 .FirstOrDefault());
@@ -120,16 +122,5 @@ namespace AddressBook.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-
-        public byte[] CalculateSHA256(string str)
-        {
-            // This is a Password encryption function
-            SHA256 sha256 = SHA256Managed.Create();
-            byte[] hashvalue;
-            UTF8Encoding objUtf8 = new UTF8Encoding();
-            hashvalue = sha256.ComputeHash(objUtf8.GetBytes(str));
-
-            return hashvalue;
-        }
     }
 }
