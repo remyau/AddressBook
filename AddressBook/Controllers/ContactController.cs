@@ -35,9 +35,10 @@ namespace AddressBook.Controllers
         [HttpGet]        
         public ActionResult Create()
         {
+            //Countries cs = new Countries();
             ContactViewModel contactViewModel = new ContactViewModel
             {
-
+                //CountryLists = cs.GetAllCountryNames()
             };
             return View(contactViewModel);
         }

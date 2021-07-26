@@ -33,6 +33,8 @@ namespace AddressBook.ViewModels
         [StringLength(6,ErrorMessage ="Must be 6 Characters",MinimumLength =6)]
         public string PostalCode { get; set; }
 
+        //public List<string> CountryLists { get; set; }
+
         [Display(Name = "Country")]
         [Required(ErrorMessage = "Field Required")]
         public string Country { get; set; }
