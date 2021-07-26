@@ -1,22 +1,59 @@
 ﻿@if (Session["userId"] != null)
 {
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-    </ul>
 
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="">Hello! @Session["userName"] </a>
-            </li>
-            <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-            </li>
-        </ul>
-    }
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <a href='@Url.Action("Index","Contact")'><img src='@Url.Content("~/Content/img/ContTitle.png")' class="logo" /></a>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                @Html.ActionLink("AddressBook", "Index", "Home", new { @class = "title-name" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                </ul>
+
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="">Hello! @Session["userName"] </a>
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                    </li>
+                </ul>
+                }
+            </div>
+        </div>
+    </div>
+    
+    
 }
 else
 {

@@ -98,7 +98,7 @@ namespace AddressBook.Controllers
                 {
                     Session["userId"] = _user.UserId;
                     Session["userName"] = _user.UserName;
-                    return RedirectToAction("Index", "Contact");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
