@@ -1,11 +1,12 @@
-﻿.table-header{
-    background-color: rgb(255, 216, 0);
+﻿
+.table-header{
+    background-color: #517E07;
 }
 .navbar {
-    background-color: rgb(255, 204, 0);
+    background-color: #517E07;
 }
 .title-name{
-    color:black;
+    color:white;
     font-weight:bold;
     font-family:'Lucida Sans';
     display:block;
@@ -13,29 +14,44 @@
     margin-top:1rem;
     text-align:center;
 }
+.btn-custom {
+    color: white;
+    font-weight:bold;
+    background-color: #517E07;
+    border-color:black;
+    position:relative;
+    width:75px;
+}
 hr {
     background-color: rgb(255, 204, 0);
 }
+
 .logo {
-    height : 60px;
-    
-    margin-top:.1rem;
-    margin-left:1rem;
-    margin-right:.2rem;
-    padding-top:.1rem;
-    padding-right:.1rem;
-    padding-bottom:.1rem;
-    position:inherit !important;
-   
+    height: 60px;
+    margin-top: .1rem;
+    margin-left: 1rem;
+    margin-right: .2rem;
+    padding-top: .1rem;
+    padding-right: .1rem;
+    padding-bottom: .1rem;
+    position: inherit !important;
 }
 
 .panel > .panel-heading {
     background-color: white;
-    border-color: rgb(255, 204, 0);
+    border-color: #517E07;
 }
 .navbar-inverse .navbar-nav >li >a{
-    color:black;
+    color:white;
 }
 .navbar-right{
     margin-right:1rem;
 }
+
+.div-custom {
+    background-color: #daffb3;
+    border-color: #009900;
+    padding: 2rem;
+    margin: 2rem;
+}
+
